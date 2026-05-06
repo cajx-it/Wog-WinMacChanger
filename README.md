@@ -6,7 +6,7 @@
 
 ## Overview
 
-**Wog-WinMacChanger** is a lightweight Windows tool that changes the MAC address of an external USB WiFi adapter by modifying its **Network Adapter GUID** in the Windows registry. It was developed and used to demonstrate a **MAC spoofing bypass attack** against a Raspberry Pi wireless access point running MAC address filtering — successfully bypassing the filter and sharing internet through the spoofed adapter.
+**Wog-WinMacChanger** is a lightweight Windows tool that changes the MAC address of an external USB WiFi adapter by modifying its **Network Adapter GUID** in the Windows registry. It was developed and used to demonstrate a **MAC spoofing bypass attack** against a personal **PisoWifi unit** running MAC address filtering — successfully bypassing the filter and sharing internet through the spoofed adapter.
 
 > ⚠️ **This tool is intended for authorized security testing only.** Only use it on networks and devices you own or have explicit written permission to test.
 
@@ -16,7 +16,7 @@
 
 - Spoof the MAC address of an **external USB WiFi adapter** on Windows
 - Uses GUID-based registry modification — no third-party driver required
-- Demonstrated successfully in a real-world pentest scenario against a Raspberry Pi AP
+- Demonstrated successfully in a real-world pentest scenario against a personal PisoWifi unit
 - Simple, portable `.exe` — no installation needed
 - Useful for network security research, MAC filter bypass testing, and privacy-conscious network switching
 
@@ -37,13 +37,13 @@
 
 ## Real-World Use Case
 
-This tool was used as part of a self-directed pentest on a **Raspberry Pi WiFi access point** configured with MAC address filtering:
+This tool was used as part of a self-directed pentest on a **personal PisoWifi unit** (Philippine coin-operated WiFi system) configured with MAC address filtering:
 
-1. The Pi's AP was set to only allow specific MAC addresses.
+1. The PisoWifi portal was set to only allow authenticated/registered MAC addresses.
 2. Wog-WinMacChanger was used to spoof the MAC address of an external USB adapter to match an allowlisted address.
 3. The spoofed adapter successfully bypassed the MAC filter, joined the network, and shared the internet connection — demonstrating that **MAC filtering alone is not a reliable security control**.
 
-**Takeaway:** MAC address filtering should be treated as a minor inconvenience, not a security boundary. Always layer it with stronger controls (WPA3, certificate-based auth, network segmentation, etc.).
+**Takeaway:** MAC address filtering should be treated as a minor inconvenience, not a security boundary. PisoWifi operators should layer stronger controls (session tokens, portal re-authentication, connection time limits, traffic monitoring, etc.) on top of MAC-based access control.
 
 ---
 
@@ -89,7 +89,7 @@ This tool is published for **educational and authorized security research purpos
 - ❌ Do not use to bypass access controls on networks you do not own
 - ❌ Do not use for any illegal activity
 
-Unauthorized MAC spoofing may violate the Computer Fraud and Abuse Act (CFAA), the Computer Misuse Act, or equivalent laws in your jurisdiction.
+Unauthorized MAC spoofing or bypassing paid network access controls (such as PisoWifi portals you do not own) may violate the Computer Fraud and Abuse Act (CFAA), the Philippine Cybercrime Prevention Act of 2012 (RA 10175), or equivalent laws in your jurisdiction.
 
 ---
 
@@ -101,4 +101,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Author
 
-**cajx-it** — built as part of a personal WiFi security research project on a Raspberry Pi testbed.
+**cajx-it** — built as part of a personal WiFi security research project testing MAC filter weaknesses on a self-owned PisoWifi unit.
